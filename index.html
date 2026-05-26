@@ -981,7 +981,7 @@
 
     <p class="hero-sub">Built for people tired of fake profiles, ghosting, and dating apps that feel disposable.</p>
 
-    <form class="waitlist-form" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" method="post" >
+    <form class="waitlist-form" onsubmit="submitML(event,this)" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" method="post" >
       <input type="email" id="heroEmail" placeholder="Your email address" />
       <button onclick="joinWaitlist('heroEmail', 'heroSuccess')">Join Waitlist</button>
     </div>
@@ -1154,7 +1154,7 @@
     </div>
     <h2>Be first when<br>Candid launches.</h2>
     <p>Reserve your spot today. Launching 7th February 2027 — founding members get early access, founding member pricing, and input into features.</p>
-    <form class="bottom-form" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" method="post" >
+    <form class="bottom-form" onsubmit="submitML(event,this)" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" method="post" >
       <input type="email" id="bottomEmail" placeholder="Your email address" />
       <button onclick="joinWaitlist('bottomEmail', 'bottomSuccess')">Reserve Your Spot</button>
     </div>
@@ -1251,5 +1251,5 @@
     ml('account', '2370810');
 </script>
 <!-- End MailerLite Universal -->
-</body>
+<script>async function submitML(e,f){e.preventDefault();const d=new FormData();d.append('fields[email]',f.querySelector('input[type="email"]').value);d.append('ml-submit','1');d.append('anticsrf','true');await fetch('https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe',{method:'POST',body:d,mode:'no-cors'});f.innerHTML='<p style="color:var(--forest);font-weight:600">✓ You\'re on the list! See you 7th February 2027.</p>';}</script></body>
 </html>
