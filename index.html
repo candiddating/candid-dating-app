@@ -209,63 +209,54 @@
   }
 
   /* FORM */
-  /* MailerLite embed wrapper — matches original form width/position */
-  .ml-form-wrap {
+  .waitlist-form {
+    display: flex;
+    gap: 12px;
     max-width: 440px;
     margin: 0 auto 16px;
     opacity: 0;
     animation: fadeUp 0.8s ease forwards 0.8s;
   }
 
-  /* Override MailerLite styles to blend with Candid brand */
-  .ml-form-wrap .ml-form-embedWrapper,
-  .ml-form-wrap .ml-embedded {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
+  .waitlist-form input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .ml-form-wrap .ml-form-embedBody,
-  .ml-form-wrap .ml-form-embedContent {
-    padding: 0 !important;
+  .waitlist-form input::placeholder { color: #B0AAA3; }
+  .waitlist-form input:focus {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
   }
 
-  .ml-form-wrap .ml-form-fieldRow input {
-    padding: 16px 20px !important;
-    border: 1.5px solid var(--border) !important;
-    border-radius: 12px !important;
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.95rem !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
+  .waitlist-form button {
+    padding: 16px 28px;
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
   }
 
-  .ml-form-wrap .ml-form-fieldRow input:focus {
-    border-color: var(--terracotta) !important;
-    box-shadow: 0 0 0 3px rgba(196,98,45,0.1) !important;
-    outline: none !important;
+  .waitlist-form button:hover {
+    background: var(--forest-light);
+    transform: translateY(-1px);
   }
 
-  .ml-form-wrap .ml-form-embedSubmit button,
-  .ml-form-wrap input[type="submit"] {
-    width: 100% !important;
-    padding: 16px 28px !important;
-    background: var(--forest) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 12px !important;
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: 500 !important;
-    cursor: pointer !important;
-    transition: background 0.2s !important;
-    margin-top: 12px !important;
-  }
-
-  .ml-form-wrap .ml-form-embedSubmit button:hover,
-  .ml-form-wrap input[type="submit"]:hover {
-    background: var(--forest-light) !important;
-  }
+  .waitlist-form button:active { transform: translateY(0); }
 
   .form-note {
     font-size: 0.78rem;
@@ -990,48 +981,12 @@
 
     <p class="hero-sub">Built for people tired of fake profiles, ghosting, and dating apps that feel disposable.</p>
 
-    <div class="ml-form-wrap">
-      <div id="mlb2-41748953" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41748953">
-      <div class="ml-form-align-center">
-        <div class="ml-form-embedWrapper embedForm">
-          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" data-code="" method="post" target="_blank">
-              <div class="ml-form-formContent">
-                <div class="ml-form-fieldRow ml-last-item">
-                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                    <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Your email address" autocomplete="email">
-                  </div>
-                </div>
-              </div>
-              <input type="hidden" name="ml-submit" value="1">
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Reserve Your Spot</button>
-                <button disabled="disabled" style="display:none;" type="button" class="loading">
-                  <div class="ml-form-embedSubmitLoad"></div>
-                  <span class="sr-only">Loading...</span>
-                </button>
-              </div>
-              <input type="hidden" name="anticsrf" value="true">
-            </form>
-          </div>
-          <div class="ml-form-successBody row-success" style="display:none">
-            <div class="ml-form-successContent">
-              <h4>You're on the list!</h4>
-              <p>We'll be in touch when Candid launches on 7th February 2027.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="waitlist-form" id="heroForm">
+      <input type="email" id="heroEmail" placeholder="Your email address" />
+      <button onclick="joinWaitlist('heroEmail', 'heroSuccess')">Join Waitlist</button>
     </div>
-    <script>
-      function ml_webform_success_41748953() {
-        var $ = ml_jQuery || jQuery;
-        $('.ml-subscribe-form-41748953 .row-success').show();
-        $('.ml-subscribe-form-41748953 .row-form').hide();
-      }
-    </script>
-    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
-    <script>fetch("https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/takel")</script>
+    <div class="success-msg" id="heroSuccess">
+      ✓ You're on the list. We'll see you on 7th February 2027.
     </div>
     <p class="form-note">Free to join. No spam. No selling your data. Just one email on launch day — 7th February 2027.</p>
 
@@ -1199,47 +1154,13 @@
     </div>
     <h2>Be first when<br>Candid launches.</h2>
     <p>Reserve your spot today. Launching 7th February 2027 — founding members get early access, founding member pricing, and input into features.</p>
-    <div id="mlb2-41748953" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-41748953">
-      <div class="ml-form-align-center">
-        <div class="ml-form-embedWrapper embedForm">
-          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/subscribe" data-code="" method="post" target="_blank">
-              <div class="ml-form-formContent">
-                <div class="ml-form-fieldRow ml-last-item">
-                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                    <input aria-label="email" aria-required="true" type="email" class="form-control" name="fields[email]" placeholder="Your email address" autocomplete="email">
-                  </div>
-                </div>
-              </div>
-              <input type="hidden" name="ml-submit" value="1">
-              <div class="ml-form-embedSubmit">
-                <button type="submit" class="primary">Reserve Your Spot</button>
-                <button disabled="disabled" style="display:none;" type="button" class="loading">
-                  <div class="ml-form-embedSubmitLoad"></div>
-                  <span class="sr-only">Loading...</span>
-                </button>
-              </div>
-              <input type="hidden" name="anticsrf" value="true">
-            </form>
-          </div>
-          <div class="ml-form-successBody row-success" style="display:none">
-            <div class="ml-form-successContent">
-              <h4>You're on the list!</h4>
-              <p>We'll be in touch when Candid launches on 7th February 2027.</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="bottom-form" id="bottomForm">
+      <input type="email" id="bottomEmail" placeholder="Your email address" />
+      <button onclick="joinWaitlist('bottomEmail', 'bottomSuccess')">Reserve Your Spot</button>
     </div>
-    <script>
-      function ml_webform_success_41748953() {
-        var $ = ml_jQuery || jQuery;
-        $('.ml-subscribe-form-41748953 .row-success').show();
-        $('.ml-subscribe-form-41748953 .row-form').hide();
-      }
-    </script>
-    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?vb397d78ebaa8a0f631d35384c46d781b" type="text/javascript"></script>
-    <script>fetch("https://assets.mailerlite.com/jsonp/2370810/forms/188166178388051574/takel")</script>
+    <div class="success-msg" id="bottomSuccess" style="background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3); color:white;">
+      ✓ You're on the list. See you on the other side.
+    </div>
     <p class="bottom-note">Free to join. No spam. Just one email when we're ready.</p>
   </div>
 </section>
@@ -1266,6 +1187,44 @@
 </footer>
 
 <script>
+  // MailerLite config — keep API key server-side in production
+  const MAILERLITE_API_KEY = 'YOUR_API_KEY_HERE'; // Move this to a server-side function
+  const MAILERLITE_GROUP_ID = '188167238768920114';
+
+  async function joinWaitlist(inputId, successId) {
+    const input = document.getElementById(inputId);
+    const success = document.getElementById(successId);
+    const email = input.value.trim();
+
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = '#C4622D';
+      input.focus();
+      setTimeout(() => input.style.borderColor = '', 1500);
+      return;
+    }
+
+    const form = input.closest('.waitlist-form, .bottom-form');
+    form.style.display = 'none';
+    success.style.display = 'block';
+
+    try {
+      await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${MAILERLITE_API_KEY}`
+        },
+        body: JSON.stringify({
+          email: email,
+          groups: [MAILERLITE_GROUP_ID]
+        })
+      });
+    } catch (error) {
+      console.log('MailerLite error:', error);
+    }
+  }
+
   // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
